@@ -1,4 +1,4 @@
-```markdown
+
 # 🪷 Lotus
 **Advanced Web Recon, JS Hunter & Sensitive File Grabber**
 
@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License">
 </p>
 
----
+
 
 ### ⚠️ Legal Disclaimer
 **Educational & Authorized Use Only!** This tool is created solely for security professionals, penetration testers, and bug bounty hunters. It is designed to be used ONLY on systems, networks, and applications that you have explicitly been authorized to test. 
@@ -112,6 +112,4 @@ All results are neatly organized inside a `lotus_result` directory, with a dedic
 
 Created with ❤️ by **0xmicho**.
 
-Released under the [MIT License](https://www.google.com/search?q=LICENSE).
-
-```
+Released under the [MIT License](LICENSE).
