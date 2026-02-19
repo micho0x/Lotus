@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Lotus: Maximum Coverage Recon, JS Hunter & Sensitive File Grabber
-# Refined for precision, stealth, and manual JS analysis
-# Usage: echo "domain.com" | ./lotus.sh
-#        ./lotus.sh -d 5 -t 30 --bypass domain.com
-#        ./lotus.sh -l domains.txt --headless
-
 set -u
 trap 'echo -e "\n[!] Script interrupted. Exiting."; kill $(jobs -p) 2>/dev/null; exit 1' INT
 
