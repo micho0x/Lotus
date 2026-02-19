@@ -51,7 +51,7 @@ Lotus relies on the power of the open-source community. You **MUST** have the fo
 
 ```bash
 # Clone the repository
-git clone [https://github.com/0xmicho/Lotus.git](https://github.com/0xmicho/Lotus.git)
+git clone https://github.com/micho0x/Lotus.git
 
 # Navigate to the directory
 cd Lotus
