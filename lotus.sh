@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Lotus: Maximum Coverage Recon, JS Hunter & Sensitive File Grabber
+# Refined for precision, stealth, and manual JS analysis
+# Usage: echo "domain.com" | ./lotus.sh
+#        ./lotus.sh -d 5 -t 30 --bypass domain.com
+#        ./lotus.sh -l domains.txt --headless
+
 set -u
 trap 'echo -e "\n[!] Script interrupted. Exiting."; kill $(jobs -p) 2>/dev/null; exit 1' INT
 
@@ -30,6 +36,9 @@ HTTPX="httpx"
 URO="uro"
 WGET="wget"
 CURL="curl"
+
+# Chrome User-Agent for wget and curl (to bypass basic WAFs)
+CHROME_UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
 # Massive list of sensitive extensions
 SENSITIVE_EXTS="zip|rar|7z|tar|gz|tgz|bz2|xz|zst|bak|backup|old|orig|copy|swp|swo|tmp|temp|log|txt|conf|config|cfg|ini|inf|yml|yaml|json|xml|sql|db|sqlite|sqlite3|mdb|accdb|dbf|dump|csv|tsv|xls|xlsx|xlsm|ods|doc|docx|dot|odt|pdf|rtf|ps1|sh|bat|cmd|vbs|psm1|psd1|key|crt|csr|pem|p12|pfx|der|jks|keystore|ovpn|git|svn|hg|idea|vscode|sublime-workspace|env|env.local|env.dev|env.prod|htaccess|htpasswd|passwd|shadow|master.passwd|sudoers|id_rsa|id_dsa|id_ecdsa|id_ed25519|github_token|gitlab_token|npmrc|yarnrc|composer.json|composer.lock|package.json|package-lock.json|go.mod|go.sum|pom.xml|build.gradle|settings.gradle|gradle.properties|docker-compose.yml|Dockerfile|Makefile|Vagrantfile|terraform.tf|terraform.tfvars|credentials|secrets|secret_key_base|master.key|storage.yml|database.yml|config.yml|application.properties|bootstrap.properties|application.conf|routes|web.config|robots.txt|sitemap.xml|crossdomain.xml|client_secret.json|service_account.json|*.p8|*.mobileprovision|*.plist|*.dmg|*.pkg|*.exe|*.msi|*.bin|*.img|*.iso|*.vmdk|*.qcow2|*.ova|*.ovf|*.backup|*.bacpac|*.dacpac|*.mdf|*.ldf|*.frm|*.myd|*.myi|*.ibd|*.ibdata1|*.redo|*.undo|*.trc|*.sqllog|*.ldif|*.kdbx|*.kdb|*.psafe3|*.agilekeychain|*.keychain|*.ppk|*.pcap|*.pcapng|*.har|*.br|*.brotli|*.gz|*.xz|*.lz4|*.snappy|*.zstd|*.cap|*.hccapx|*.22000"
@@ -630,7 +639,7 @@ for RAW_DOMAIN in "${DOMAINS[@]}"; do
 
     # Katana
     echo "[+] katana running..."
-    KATANA_CMD="$KATANA -u $TARGET_URL -d $DEPTH -jc -kf all -c $THREADS -rl $RATE_LIMIT -silent -o katana.txt -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'"
+    KATANA_CMD="$KATANA -u $TARGET_URL -d $DEPTH -jc -kf all -c $THREADS -rl $RATE_LIMIT -silent -o katana.txt -H 'User-Agent: $CHROME_UA'"
     if [ "$HEADLESS" = true ]; then
         KATANA_CMD="$KATANA_CMD -hl -sc"
     fi
@@ -661,9 +670,46 @@ for RAW_DOMAIN in "${DOMAINS[@]}"; do
     echo "[+] gospider collected $(wc -l < gospider.txt 2>/dev/null || echo 0) results."
     echo "[+] hakrawler (active) collected $(wc -l < hakrawler_active.txt 2>/dev/null || echo 0) results."
 
+    # ---------- DIRECT HTML EXTRACTION FOR JS/TS FILES (SPA Support) ----------
+    echo "[+] 🌐 Extracting JS/TS files directly from HTML (SPA support)..."
+    # Fetch the main page HTML with Chrome UA
+    html_content=$($CURL -k -s -L -A "$CHROME_UA" "$TARGET_URL")
+    # Extract src attributes from script tags
+    echo "$html_content" | grep -oP '(?i)src=["'\'']\K[^"'\'' ]+' | while read -r src; do
+        # Skip if already absolute with http
+        if [[ "$src" =~ ^https?:// ]]; then
+            echo "$src"
+        elif [[ "$src" =~ ^// ]]; then
+            echo "https:$src"
+        elif [[ "$src" =~ ^/ ]]; then
+            # Root-relative: prepend base URL (protocol://domain)
+            base_url=$(echo "$TARGET_URL" | grep -oP '^https?://[^/]+')
+            echo "${base_url}${src}"
+        else
+            # Relative path without leading slash: resolve against current path
+            if [[ "$TARGET_URL" =~ ^(https?://[^/]+)(/.*)?$ ]]; then
+                base="${BASH_REMATCH[1]}"
+                path="${BASH_REMATCH[2]:-}"
+                if [ -z "$path" ] || [[ "$path" == */ ]]; then
+                    echo "${TARGET_URL}${src}"
+                else
+                    # Remove everything after last slash
+                    dir=$(echo "$path" | grep -o '^.*/')
+                    echo "${base}${dir}${src}"
+                fi
+            else
+                # Fallback: just prepend TARGET_URL with / if needed
+                echo "${TARGET_URL}/${src}"
+            fi
+        fi
+    done | sort -u > html_scripts.txt
+
+    count_html=$(wc -l < html_scripts.txt 2>/dev/null || echo 0)
+    echo "[+] Extracted $count_html script references from HTML."
+
     # ---------- MERGE & SCOPE FILTER ----------
     echo "[+] 🧹 Merging and applying scope filter..."
-    cat gau.txt wayback.txt waymore.txt gospider.txt katana.txt hakrawler_passive.txt hakrawler_active.txt 2>/dev/null | sort -u > all_urls_raw.txt
+    cat gau.txt wayback.txt waymore.txt gospider.txt katana.txt hakrawler_passive.txt hakrawler_active.txt html_scripts.txt 2>/dev/null | sort -u > all_urls_raw.txt
     TOTAL_RAW=$(wc -l < all_urls_raw.txt)
     filter_scope "$BASE_DOMAIN" all_urls_raw.txt all_urls_scoped.txt
     TOTAL_SCOPED=$(wc -l < all_urls_scoped.txt)
@@ -691,7 +737,7 @@ for RAW_DOMAIN in "${DOMAINS[@]}"; do
             echo "   🚨 $LIVE_SENSITIVE live sensitive files!"
             mkdir -p sensitive_downloads
             cd sensitive_downloads
-            $WGET -i ../live_sensitive_files.txt -q --show-progress --timeout=10 --tries=2 --no-check-certificate 2>/dev/null
+            $WGET -i ../live_sensitive_files.txt -q --show-progress --timeout=10 --tries=2 --no-check-certificate -U "$CHROME_UA" 2>/dev/null
             cd ..
         else
             echo "   😔 No live (200) sensitive files."
@@ -748,27 +794,28 @@ for RAW_DOMAIN in "${DOMAINS[@]}"; do
         echo "   🤷 No juicy paths found."
     fi
 
-    # ---------- JS FILES: ONLY DOWNLOAD, NO PARSING ----------
-    echo "[+] 📜 Processing JavaScript files (download only, manual review)..."
-    grep -i "\.js$" all_urls.txt | grep -ivE "\.json$|\.jsp$|\.js\.map$" | sort -u > js_files_all.txt 2>/dev/null
-    JS_COUNT=$(wc -l < js_files_all.txt)
+    # ---------- JS/TS FILES: EXTRACT, PROBE, DOWNLOAD ----------
+    echo "[+] 📜 Processing JavaScript/TypeScript files (download only, manual review)..."
+    # Match .js, .ts, .tsx with optional query parameters, exclude known false positives
+    grep -iE "\.(js|ts|tsx)(\?.*)?$" all_urls.txt | grep -ivE "\.(json|jsp|js\.map|ts\.map|tsx\.map)(\?.*)?$" | sort -u > js_ts_files_all.txt 2>/dev/null
+    JS_TS_COUNT=$(wc -l < js_ts_files_all.txt)
 
-    if [ "$JS_COUNT" -gt 0 ]; then
-        echo "   🟢 Checking live JS files..."
-        $HTTPX -silent -insecure -mc 200 -l js_files_all.txt -threads "$THREADS" -rl "$RATE_LIMIT" -random-agent -o live_js.txt 2>/dev/null
-        LIVE_JS=$(wc -l < live_js.txt)
+    if [ "$JS_TS_COUNT" -gt 0 ]; then
+        echo "   🟢 Checking live JS/TS files..."
+        $HTTPX -silent -insecure -mc 200 -l js_ts_files_all.txt -threads "$THREADS" -rl "$RATE_LIMIT" -random-agent -o live_js_ts.txt 2>/dev/null
+        LIVE_JS_TS=$(wc -l < live_js_ts.txt)
 
-        if [ "$LIVE_JS" -gt 0 ]; then
-            echo "   📥 Downloading $LIVE_JS live JS files to 'js_downloads' (manual analysis)..."
-            mkdir -p js_downloads
-            cd js_downloads
-            $WGET -i ../live_js.txt -q --show-progress --timeout=10 --tries=2 --no-check-certificate 2>/dev/null
+        if [ "$LIVE_JS_TS" -gt 0 ]; then
+            echo "   📥 Downloading $LIVE_JS_TS live JS/TS files to 'js_ts_downloads' (manual analysis)..."
+            mkdir -p js_ts_downloads
+            cd js_ts_downloads
+            $WGET -i ../live_js_ts.txt -q --show-progress --timeout=10 --tries=2 --no-check-certificate -U "$CHROME_UA" 2>/dev/null
             cd ..
         else
-            echo "   ❌ No live JS files found."
+            echo "   ❌ No live JS/TS files found."
         fi
     else
-        echo "   ❌ No JS files found."
+        echo "   ❌ No JS/TS files found."
     fi
 
     # ---------- PARAMETER EXTRACTION ----------
@@ -797,7 +844,7 @@ for RAW_DOMAIN in "${DOMAINS[@]}"; do
     if [ -s juicy_forbidden.txt ]; then
         echo "    - juicy_forbidden.txt: $(wc -l < juicy_forbidden.txt) (bypass tests in bypass_juicy/)"
     fi
-    echo "    - live_js.txt: $(wc -l < live_js.txt 2>/dev/null || echo 0)"
+    echo "    - live_js_ts.txt: $(wc -l < live_js_ts.txt 2>/dev/null || echo 0)"
     echo "    - parameters.txt: $(wc -l < parameters.txt 2>/dev/null || echo 0)"
     echo "=========================================="
 
