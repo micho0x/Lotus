@@ -39,10 +39,8 @@ CURL="curl"
 
 # Chrome User-Agent for wget and curl (to bypass basic WAFs)
 CHROME_UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-
 # Massive list of sensitive extensions
-SENSITIVE_EXTS="zip|rar|7z|tar|gz|tgz|bz2|xz|zst|bak|backup|old|orig|copy|swp|swo|tmp|temp|log|txt|conf|config|cfg|ini|inf|yml|yaml|json|xml|sql|db|sqlite|sqlite3|mdb|accdb|dbf|dump|csv|tsv|xls|xlsx|xlsm|ods|doc|docx|dot|odt|pdf|rtf|ps1|sh|bat|cmd|vbs|psm1|psd1|key|crt|csr|pem|p12|pfx|der|jks|keystore|ovpn|git|svn|hg|idea|vscode|sublime-workspace|env|env.local|env.dev|env.prod|htaccess|htpasswd|passwd|shadow|master.passwd|sudoers|id_rsa|id_dsa|id_ecdsa|id_ed25519|github_token|gitlab_token|npmrc|yarnrc|composer.json|composer.lock|package.json|package-lock.json|go.mod|go.sum|pom.xml|build.gradle|settings.gradle|gradle.properties|docker-compose.yml|Dockerfile|Makefile|Vagrantfile|terraform.tf|terraform.tfvars|credentials|secrets|secret_key_base|master.key|storage.yml|database.yml|config.yml|application.properties|bootstrap.properties|application.conf|routes|web.config|robots.txt|sitemap.xml|crossdomain.xml|client_secret.json|service_account.json|*.p8|*.mobileprovision|*.plist|*.dmg|*.pkg|*.exe|*.msi|*.bin|*.img|*.iso|*.vmdk|*.qcow2|*.ova|*.ovf|*.backup|*.bacpac|*.dacpac|*.mdf|*.ldf|*.frm|*.myd|*.myi|*.ibd|*.ibdata1|*.redo|*.undo|*.trc|*.sqllog|*.ldif|*.kdbx|*.kdb|*.psafe3|*.agilekeychain|*.keychain|*.ppk|*.pcap|*.pcapng|*.har|*.br|*.brotli|*.gz|*.xz|*.lz4|*.snappy|*.zstd|*.cap|*.hccapx|*.22000"
-
+SENSITIVE_EXTS="zip|rar|7z|tar|gz|tgz|bz2|xz|zst|bak|backup|old|orig|copy|swp|swo|tmp|temp|log|txt|conf|config|cfg|ini|inf|yml|yaml|json|xml|sql|db|sqlite|sqlite3|mdb|accdb|dbf|dump|csv|tsv|xls|xlsx|xlsm|ods|doc|docx|dot|odt|pdf|rtf|ps1|sh|bat|cmd|vbs|psm1|psd1|key|crt|csr|pem|p12|pfx|der|jks|keystore|ovpn|git|svn|hg|idea|vscode|sublime-workspace|env|env.local|env.dev|env.prod|htaccess|htpasswd|passwd|shadow|master.passwd|sudoers|id_rsa|id_dsa|id_ecdsa|id_ed25519|github_token|gitlab_token|npmrc|yarnrc|composer.json|composer.lock|package.json|package-lock.json|go.mod|go.sum|pom.xml|build.gradle|settings.gradle|gradle.properties|docker-compose.yml|Dockerfile|Makefile|Vagrantfile|terraform.tf|terraform.tfvars|credentials|secrets|secret_key_base|master.key|storage.yml|database.yml|config.yml|application.properties|bootstrap.properties|application.conf|routes|web.config|robots.txt|sitemap.xml|crossdomain.xml|client_secret.json|service_account.json|p8|mobileprovision|plist|dmg|pkg|exe|msi|bin|img|iso|vmdk|qcow2|ova|ovf|backup|bacpac|dacpac|mdf|ldf|frm|myd|myi|ibd|ibdata1|redo|undo|trc|sqllog|ldif|kdbx|kdb|psafe3|agilekeychain|keychain|ppk|pcap|pcapng|har|br|brotli|gz|xz|lz4|snappy|zstd|cap|hccapx|22000"
 # Massive list of juicy directory/file names
 JUICY_WORDS="admin|administrator|api|rest|graphql|graphiql|swagger|swagger-ui|swagger.json|swagger.yaml|openapi.json|docs|documentation|redoc|v1|v2|v3|v4|beta|alpha|test|testing|dev|development|stage|staging|prod|production|sandbox|uat|demo|internal|private|public|secure|auth|login|signin|signup|register|user|users|profile|account|dashboard|panel|console|portal|cpanel|phpmyadmin|phppgadmin|adminer|mysql|pma|webmail|mail|roundcube|squirrelmail|zimbra|exchange|owa|ews|activesync|autodiscover|rpc|ews|ecp|owa|mapi|powerbi|grafana|prometheus|kibana|elasticsearch|logstash|jenkins|gitlab|github|bitbucket|jira|confluence|sonarqube|nexus|artifactory|harbor|docker|registry|kubernetes|k8s|openshift|rancher|nomad|consul|vault|traefik|nginx|apache|tomcat|jboss|wildfly|websphere|weblogic|payara|glassfish|jetty|netty|undertow|node|express|flask|django|rails|laravel|symfony|yii|cakephp|codeigniter|zend|spring|struts|hibernate|mybatis|phpinfo|info|status|health|metrics|debug|trace|monitor|actuator|env|heapdump|threaddump|threads|conditions|configprops|mappings|shutdown|restart|pause|resume|refresh|bus-refresh|bus-env|service-registry|eureka|consul|zookeeper|etcd|skywalking|zipkin|jaeger|opentelemetry|fluentd|logstash|filebeat|metricbeat|heartbeat|packetbeat|auditbeat|functionbeat|winlogbeat|kafka|zookeeper|rabbitmq|activemq|artemis|pulsar|rocketmq|redis|memcached|couchbase|mongodb|elasticsearch|solr|sphinx|meilisearch|typesense|algolia|azure|aws|s3|bucket|cloudfront|lambda|ec2|rds|dynamodb|redshift|kms|secretsmanager|ssm|parameterstore|cloudwatch|eventbridge|sns|sqs|stepfunctions|glue|emr|data pipeline|databricks|snowflake|bigquery|pubsub|firebase|gcp|googlecloud|appengine|compute|storage|sql|spanner|bigtable|datastore|firestore|functions|run|cloudrun|gae|gke|aks|eks|fargate|serverless|openfaas|openwhisk|kubeless|fn|fission|knative|tekton|argo|flux|jenkinsx|spinnaker|drone|circleci|travisci|githubactions|gitlabci|azuredevops|teamcity|bamboo|buddy|codeship|wercker|concourse|buildkite|semaphore|bitrise|appcenter|fastlane|jenkins|bamboo|teamcity|octopus|ansible|chef|puppet|salt|terraform|packer|vagrant|cloudformation|arm|bicep|pulumi|crossplane|kustomize|helm|kpt|kubectl|oc|istio|linkerd|consul|envoy|nginx|haproxy|traefik|caddy|varnish|squid|apache|httpd|lighttpd|iis"
 
@@ -165,13 +163,30 @@ filter_scope() {
     grep -E "https?://([a-zA-Z0-9.-]*\.)?${base_regex}(:|\$|/)" "$infile" > "$outfile" 2>/dev/null || true
 }
 
+# Function to test a single bypass technique (used with xargs)
+_bypass_single() {
+    local url="$1"
+    local header="$2"
+    local base_domain="$3"
+    local success_file="$4"
+    local curl_timeout="--connect-timeout 5 --max-time 10"
+    # Replace placeholder in header
+    header_expanded=$(echo "$header" | sed "s/__BASE_DOMAIN__/$base_domain/g")
+    status=$(curl -k -s -o /dev/null -w "%{http_code}" $curl_timeout -H "$header_expanded" "$url" 2>/dev/null)
+    if [ "$status" = "200" ]; then
+        echo "$url | Header: $header_expanded" >> "$success_file"
+        echo "   ✅ Bypass successful: Header: $header_expanded"
+        return 0
+    fi
+    return 1
+}
+
 # Enhanced bypass function with extensive techniques and logging
 # Arguments: url, output_directory, forbidden_file (to append on failure)
 test_bypass() {
     local url="$1"
     local outdir="$2"
     local forbidden_file="$3"
-    local base_name=$(echo "$url" | sed -E 's#https?://##g' | tr '/?&' '_')
 
     # Headers with placeholder __BASE_DOMAIN__ (replaced later)
     declare -a headers=(
@@ -516,23 +531,15 @@ test_bypass() {
     local success_file="$outdir/bypass_success.txt"
     local found=false
 
-    log_success() {
-        local technique="$1"
-        echo "$url | $technique" >> "$success_file"
-        echo "   ✅ Bypass successful: $technique"
-        found=true
-    }
+    # Test header variations in parallel using xargs
+    # We'll export the function and variables to be used by xargs
+    export -f _bypass_single
+    export url base_domain success_file curl_timeout
 
-    # Test header variations (replace __BASE_DOMAIN__ with actual base)
-    for header in "${headers[@]}"; do
-        header_expanded=$(echo "$header" | sed "s/__BASE_DOMAIN__/$BASE_DOMAIN/g")
-        status=$($CURL -k -s -o /dev/null -w "%{http_code}" -H "$header_expanded" "$url" 2>/dev/null)
-        if [ "$status" = "200" ]; then
-            log_success "Header: $header_expanded"
-        fi
-    done
+    # Use xargs to run header tests in parallel (up to 10 processes)
+    printf '%s\n' "${headers[@]}" | xargs -P 10 -I {} bash -c '_bypass_single "$1" "{}" "$2" "$3"' _ "$url" "$BASE_DOMAIN" "$success_file" && found=true
 
-    # Test path tricks
+    # Test path tricks (these are fewer, can run sequentially or also parallel)
     if [[ "$url" =~ ^(https?://[^/]+)(/.*)?$ ]]; then
         base="${BASH_REMATCH[1]}"
         path="${BASH_REMATCH[2]:-}"
@@ -542,9 +549,11 @@ test_bypass() {
             else
                 test_url="$url"
             fi
-            status=$($CURL -k -s -o /dev/null -w "%{http_code}" "$test_url" 2>/dev/null)
+            status=$(curl -k -s -o /dev/null -w "%{http_code}" --connect-timeout 5 --max-time 10 -L "$test_url" 2>/dev/null)
             if [ "$status" = "200" ]; then
-                log_success "Path trick: $trick → $test_url"
+                echo "$url | Path trick: $trick → $test_url" >> "$success_file"
+                echo "   ✅ Bypass successful: Path trick: $trick"
+                found=true
             fi
         done
     fi
@@ -558,31 +567,12 @@ test_bypass() {
 cleanup_domain_folder() {
     local folder="$1"
     local base_domain="$2"
-    cd "$folder" || return
+    # Use subshell to avoid cd affecting caller
+    (
+        cd "$folder" || return
 
-    find . -maxdepth 1 -type f -name "*.txt" -size 0 -delete
-
-    for file in *.txt; do
-        [ -f "$file" ] || continue
-        lines=$(wc -l < "$file" 2>/dev/null || echo 0)
-        if [ "$lines" -le 100 ] && [ "$lines" -gt 0 ]; then
-            tmpfile=$(mktemp)
-            while IFS= read -r url; do
-                if [[ "$url" =~ ^https?://([^/:]+)(:[0-9]+)?(/.*)?$ ]]; then
-                    host="${BASH_REMATCH[1]}"
-                    port="${BASH_REMATCH[2]}"
-                    path="${BASH_REMATCH[3]}"
-                    if [ "$host" = "$base_domain" ] && [ -z "$port" ] && { [ -z "$path" ] || [ "$path" = "/" ]; }; then
-                        continue
-                    fi
-                fi
-                echo "$url" >> "$tmpfile"
-            done < "$file"
-            mv "$tmpfile" "$file"
-        fi
-    done
-
-    cd - >/dev/null
+        find . -maxdepth 1 -type f -name "*.txt" -size 0 -delete
+    )
 }
 
 # ==================== MAIN LOOP ====================
@@ -596,257 +586,325 @@ for RAW_DOMAIN in "${DOMAINS[@]}"; do
     SAFE_NAME=$(sanitize_name "$RAW_DOMAIN")
     OUTDIR="$MAIN_OUTDIR/$SAFE_NAME"
     mkdir -p "$OUTDIR"
-    cd "$OUTDIR"
 
-    TARGET_URL=$(ensure_url "$RAW_DOMAIN")
-    BASE_DOMAIN=$(extract_base "$RAW_DOMAIN")
-    export BASE_DOMAIN  # for use in bypass function
+    # Use subshell to isolate cd
+    (
+        cd "$OUTDIR" || exit 1
 
-    # ---------- PASSIVE RECON ----------
-    echo "[+] 🌐 Passive Recon..."
+        TARGET_URL=$(ensure_url "$RAW_DOMAIN")
+        BASE_DOMAIN=$(extract_base "$RAW_DOMAIN")
+        export BASE_DOMAIN  # for use in bypass function
 
-    if is_ip_target "$RAW_DOMAIN"; then
-        echo "   [!] Skipping passive (IP target)."
-        touch gau.txt wayback.txt waymore.txt hakrawler_passive.txt
-    else
-        # gauplus
-        echo "[+] gauplus running..."
-        $GAUPLUS -t "$THREADS" -random-agent -subs "$RAW_DOMAIN" > gau.txt 2>/dev/null &
-        PID_GAU=$!
-        # waybackurls
-        echo "[+] waybackurls running..."
-        $WAYBACKURLS "$RAW_DOMAIN" > wayback.txt 2>/dev/null &
-        PID_WB=$!
-        # waymore
-        echo "[+] waymore running..."
-        $WAYMORE -i "$RAW_DOMAIN" -mode U -oU waymore.txt &>/dev/null &
-        PID_WM=$!
-        # hakrawler passive
-        echo "[+] hakrawler (passive) running..."
-        echo "$TARGET_URL" | $HAKRAWLER -plain -subs -depth 1 > hakrawler_passive.txt 2>/dev/null &
-        PID_HK=$!
+        # ---------- PASSIVE RECON ----------
+        echo "[+] 🌐 Passive Recon..."
 
-        wait $PID_GAU $PID_WB $PID_WM $PID_HK 2>/dev/null
-
-        echo "[+] gauplus collected $(wc -l < gau.txt 2>/dev/null || echo 0) results."
-        echo "[+] waybackurls collected $(wc -l < wayback.txt 2>/dev/null || echo 0) results."
-        echo "[+] waymore collected $(wc -l < waymore.txt 2>/dev/null || echo 0) results."
-        echo "[+] hakrawler (passive) collected $(wc -l < hakrawler_passive.txt 2>/dev/null || echo 0) results."
-    fi
-
-    # ---------- ACTIVE CRAWLING ----------
-    echo "[+] ⚔️  Active crawling..."
-
-    # Katana
-    echo "[+] katana running..."
-    KATANA_CMD="$KATANA -u $TARGET_URL -d $DEPTH -jc -kf all -c $THREADS -rl $RATE_LIMIT -silent -o katana.txt -H 'User-Agent: $CHROME_UA'"
-    if [ "$HEADLESS" = true ]; then
-        KATANA_CMD="$KATANA_CMD -hl -sc"
-    fi
-    eval "$KATANA_CMD" 2>/dev/null &
-    PID_KAT=$!
-
-    # GoSpider
-    echo "[+] gospider running..."
-    $GOSPIDER -s "$TARGET_URL" -a --js -t "$THREADS" -d "$DEPTH" -o gospider_raw &>/dev/null &
-    PID_GO=$!
-
-    # hakrawler active
-    echo "[+] hakrawler (active) running..."
-    echo "$TARGET_URL" | $HAKRAWLER -plain -subs -depth "$DEPTH" -t "$THREADS" > hakrawler_active.txt 2>/dev/null &
-    PID_HKA=$!
-
-    wait $PID_KAT $PID_GO $PID_HKA 2>/dev/null
-
-    echo "[+] katana collected $(wc -l < katana.txt 2>/dev/null || echo 0) results."
-
-    # Process GoSpider output
-    if [ -d gospider_raw ]; then
-        cat gospider_raw/* 2>/dev/null | grep -Eo "https?://[^[:space:]\"]+" | sort -u > gospider.txt
-        rm -rf gospider_raw
-    else
-        touch gospider.txt
-    fi
-    echo "[+] gospider collected $(wc -l < gospider.txt 2>/dev/null || echo 0) results."
-    echo "[+] hakrawler (active) collected $(wc -l < hakrawler_active.txt 2>/dev/null || echo 0) results."
-
-    # ---------- DIRECT HTML EXTRACTION FOR JS/TS FILES (SPA Support) ----------
-    echo "[+] 🌐 Extracting JS/TS files directly from HTML (SPA support)..."
-    # Fetch the main page HTML with Chrome UA
-    html_content=$($CURL -k -s -L -A "$CHROME_UA" "$TARGET_URL")
-    # Extract src attributes from script tags
-    echo "$html_content" | grep -oP '(?i)src=["'\'']\K[^"'\'' ]+' | while read -r src; do
-        # Skip if already absolute with http
-        if [[ "$src" =~ ^https?:// ]]; then
-            echo "$src"
-        elif [[ "$src" =~ ^// ]]; then
-            echo "https:$src"
-        elif [[ "$src" =~ ^/ ]]; then
-            # Root-relative: prepend base URL (protocol://domain)
-            base_url=$(echo "$TARGET_URL" | grep -oP '^https?://[^/]+')
-            echo "${base_url}${src}"
+        if is_ip_target "$RAW_DOMAIN"; then
+            echo "   [!] Skipping passive (IP target)."
+            touch gau.txt wayback.txt waymore.txt hakrawler_passive.txt
         else
-            # Relative path without leading slash: resolve against current path
-            if [[ "$TARGET_URL" =~ ^(https?://[^/]+)(/.*)?$ ]]; then
-                base="${BASH_REMATCH[1]}"
-                path="${BASH_REMATCH[2]:-}"
-                if [ -z "$path" ] || [[ "$path" == */ ]]; then
-                    echo "${TARGET_URL}${src}"
+            # gauplus
+            echo "[+] gauplus running..."
+            $GAUPLUS -t "$THREADS" -random-agent -subs "$RAW_DOMAIN" > gau.txt 2>/dev/null &
+            PID_GAU=$!
+            # waybackurls
+            echo "[+] waybackurls running..."
+            $WAYBACKURLS "$RAW_DOMAIN" > wayback.txt 2>/dev/null &
+            PID_WB=$!
+            # waymore
+            echo "[+] waymore running..."
+            $WAYMORE -i "$RAW_DOMAIN" -mode U -oU waymore.txt &>/dev/null &
+            PID_WM=$!
+            # hakrawler passive
+            echo "[+] hakrawler (passive) running..."
+            echo "$TARGET_URL" | $HAKRAWLER -plain -subs -depth 1 > hakrawler_passive.txt 2>/dev/null &
+            PID_HK=$!
+
+            wait $PID_GAU $PID_WB $PID_WM $PID_HK 2>/dev/null
+
+            echo "[+] gauplus collected $(wc -l < gau.txt 2>/dev/null || echo 0) results."
+            echo "[+] waybackurls collected $(wc -l < wayback.txt 2>/dev/null || echo 0) results."
+            echo "[+] waymore collected $(wc -l < waymore.txt 2>/dev/null || echo 0) results."
+            echo "[+] hakrawler (passive) collected $(wc -l < hakrawler_passive.txt 2>/dev/null || echo 0) results."
+        fi
+
+        # ---------- ACTIVE CRAWLING ----------
+        echo "[+] ⚔️  Active crawling..."
+
+        # Katana
+        echo "[+] katana running..."
+        katana_cmd=(
+            "$KATANA"
+            "-u" "$TARGET_URL"
+            "-d" "$DEPTH"
+            "-jc"
+            "-kf" "all"
+            "-c" "$THREADS"
+            "-rl" "$RATE_LIMIT"
+            "-silent"
+            "-o" "katana.txt"
+            "-H" "User-Agent: $CHROME_UA"
+        )
+        if [ "$HEADLESS" = true ]; then
+            katana_cmd+=("-hl" "-sc")
+        fi
+        "${katana_cmd[@]}" 2>/dev/null &
+        PID_KAT=$!
+
+        # GoSpider
+        echo "[+] gospider running..."
+        gospider_cmd=(
+            "$GOSPIDER"
+            "-s" "$TARGET_URL"
+            "-a"
+            "--js"
+            "-t" "$THREADS"
+            "-d" "$DEPTH"
+            "-o" "gospider_raw"
+        )
+        "${gospider_cmd[@]}" &>/dev/null &
+        PID_GO=$!
+
+        # hakrawler active
+        echo "[+] hakrawler (active) running..."
+        hakrawler_cmd=(
+            "$HAKRAWLER"
+            "-plain"
+            "-subs"
+            "-depth" "$DEPTH"
+            "-t" "$THREADS"
+        )
+        echo "$TARGET_URL" | "${hakrawler_cmd[@]}" > hakrawler_active.txt 2>/dev/null &
+        PID_HKA=$!
+
+        wait $PID_KAT $PID_GO $PID_HKA 2>/dev/null
+
+        echo "[+] katana collected $(wc -l < katana.txt 2>/dev/null || echo 0) results."
+
+        # Process GoSpider output
+        if [ -d gospider_raw ]; then
+            cat gospider_raw/* 2>/dev/null | grep -Eo "https?://[^[:space:]\"]+" | sort -u > gospider.txt
+            rm -rf gospider_raw
+        else
+            touch gospider.txt
+        fi
+        echo "[+] gospider collected $(wc -l < gospider.txt 2>/dev/null || echo 0) results."
+        echo "[+] hakrawler (active) collected $(wc -l < hakrawler_active.txt 2>/dev/null || echo 0) results."
+
+        # ---------- DIRECT HTML EXTRACTION FOR JS/TS FILES (SPA Support) ----------
+        echo "[+] 🌐 Extracting JS/TS files directly from HTML (SPA support)..."
+        # Fetch the main page HTML with Chrome UA
+        html_content=$($CURL -k -s -L -A "$CHROME_UA" "$TARGET_URL")
+        
+        # Extract base href if present
+        base_href=$(echo "$html_content" | grep -oP '(?i)<base[^>]+href=["'\'']\K[^"'\'' ]+' | head -1)
+        if [ -n "$base_href" ]; then
+            echo "   📌 Found base href: $base_href"
+        fi
+
+        # Extract src attributes from script tags
+        echo "$html_content" | grep -oP '(?i)src=["'\'']\K[^"'\'' ]+' | while read -r src; do
+            # Skip if already absolute with http
+            if [[ "$src" =~ ^https?:// ]]; then
+                echo "$src"
+            elif [[ "$src" =~ ^// ]]; then
+                echo "https:$src"
+            elif [[ "$src" =~ ^/ ]]; then
+                # Root-relative: prepend base URL (protocol://domain)
+                base_url=$(echo "$TARGET_URL" | grep -oP '^https?://[^/]+')
+                echo "${base_url}${src}"
+            else
+                # Relative path without leading slash: resolve against base or current path
+                if [ -n "$base_href" ]; then
+                    # If base_href is absolute or relative, resolve accordingly
+                    if [[ "$base_href" =~ ^https?:// ]]; then
+                        echo "${base_href}${src}"
+                    elif [[ "$base_href" =~ ^/ ]]; then
+                        base_url=$(echo "$TARGET_URL" | grep -oP '^https?://[^/]+')
+                        echo "${base_url}${base_href}${src}"
+                    else
+                        # base_href is relative to current directory
+                        if [[ "$TARGET_URL" =~ ^(https?://[^/]+)(/.*)?$ ]]; then
+                            base="${BASH_REMATCH[1]}"
+                            path="${BASH_REMATCH[2]:-}"
+                            if [ -z "$path" ] || [[ "$path" == */ ]]; then
+                                echo "${TARGET_URL}${base_href}${src}"
+                            else
+                                dir=$(echo "$path" | grep -o '^.*/')
+                                echo "${base}${dir}${base_href}${src}"
+                            fi
+                        else
+                            echo "${TARGET_URL}/${src}"
+                        fi
+                    fi
                 else
-                    # Remove everything after last slash
-                    dir=$(echo "$path" | grep -o '^.*/')
-                    echo "${base}${dir}${src}"
+                    # No base tag, resolve against current path
+                    if [[ "$TARGET_URL" =~ ^(https?://[^/]+)(/.*)?$ ]]; then
+                        base="${BASH_REMATCH[1]}"
+                        path="${BASH_REMATCH[2]:-}"
+                        if [ -z "$path" ] || [[ "$path" == */ ]]; then
+                            echo "${TARGET_URL}${src}"
+                        else
+                            # Remove everything after last slash
+                            dir=$(echo "$path" | grep -o '^.*/')
+                            echo "${base}${dir}${src}"
+                        fi
+                    else
+                        # Fallback: just prepend TARGET_URL with / if needed
+                        echo "${TARGET_URL}/${src}"
+                    fi
                 fi
-            else
-                # Fallback: just prepend TARGET_URL with / if needed
-                echo "${TARGET_URL}/${src}"
             fi
-        fi
-    done | sort -u > html_scripts.txt
+        done | sort -u > html_scripts.txt
 
-    count_html=$(wc -l < html_scripts.txt 2>/dev/null || echo 0)
-    echo "[+] Extracted $count_html script references from HTML."
+        count_html=$(wc -l < html_scripts.txt 2>/dev/null || echo 0)
+        echo "[+] Extracted $count_html script references from HTML."
 
-    # ---------- MERGE & SCOPE FILTER ----------
-    echo "[+] 🧹 Merging and applying scope filter..."
-    cat gau.txt wayback.txt waymore.txt gospider.txt katana.txt hakrawler_passive.txt hakrawler_active.txt html_scripts.txt 2>/dev/null | sort -u > all_urls_raw.txt
-    TOTAL_RAW=$(wc -l < all_urls_raw.txt)
-    filter_scope "$BASE_DOMAIN" all_urls_raw.txt all_urls_scoped.txt
-    TOTAL_SCOPED=$(wc -l < all_urls_scoped.txt)
-    echo "   🎯 URLs in scope: $TOTAL_SCOPED (out of $TOTAL_RAW raw)"
+        # ---------- MERGE & SCOPE FILTER ----------
+        echo "[+] 🧹 Merging and applying scope filter..."
+        cat gau.txt wayback.txt waymore.txt gospider.txt katana.txt hakrawler_passive.txt hakrawler_active.txt html_scripts.txt 2>/dev/null | sort -u > all_urls_raw.txt
+        TOTAL_RAW=$(wc -l < all_urls_raw.txt)
+        filter_scope "$BASE_DOMAIN" all_urls_raw.txt all_urls_scoped.txt
+        TOTAL_SCOPED=$(wc -l < all_urls_scoped.txt)
+        echo "   🎯 URLs in scope: $TOTAL_SCOPED (out of $TOTAL_RAW raw)"
 
-    echo "[+] uro cleaning..."
-    $URO -i all_urls_scoped.txt -o all_urls.txt 2>/dev/null
-    TOTAL_CLEAN=$(wc -l < all_urls.txt)
-    echo "   🧼 After uro cleaning: $TOTAL_CLEAN"
+        echo "[+] uro cleaning..."
+        $URO -i all_urls_scoped.txt -o all_urls.txt 2>/dev/null
+        TOTAL_CLEAN=$(wc -l < all_urls.txt)
+        echo "   🧼 After uro cleaning: $TOTAL_CLEAN"
 
-    # ---------- SENSITIVE FILE HUNTING ----------
-    echo "[+] 💣 Hunting sensitive files (extensions: ${SENSITIVE_EXTS//|/ })..."
-    grep -Eio ".*\.($SENSITIVE_EXTS)(\?.*)?$" all_urls.txt | sort -u > sensitive_files_all.txt 2>/dev/null
-    SENSITIVE_COUNT=$(wc -l < sensitive_files_all.txt)
+        # ---------- SENSITIVE FILE HUNTING ----------
+        echo "[+] 💣 Hunting sensitive files (extensions: ${SENSITIVE_EXTS//|/ })..."
+        grep -Eio ".*\.($SENSITIVE_EXTS)(\?.*)?$" all_urls.txt | sort -u > sensitive_files_all.txt 2>/dev/null
+        SENSITIVE_COUNT=$(wc -l < sensitive_files_all.txt)
 
-    if [ "$SENSITIVE_COUNT" -gt 0 ]; then
-        echo "   ⚠️  Found $SENSITIVE_COUNT URLs with sensitive extensions."
-        echo "[+] httpx probing sensitive files..."
-        $HTTPX -silent -insecure -mc 200,403,401 -l sensitive_files_all.txt -threads "$THREADS" -rl "$RATE_LIMIT" -random-agent -o sensitive_probed.txt 2>/dev/null
-        grep ":200$" sensitive_probed.txt | sed 's/:200$//' > live_sensitive_files.txt
-        grep -E ":40[13]$" sensitive_probed.txt | sed -E 's/:(40[13])$//' > sensitive_forbidden.txt
-        LIVE_SENSITIVE=$(wc -l < live_sensitive_files.txt)
+        if [ "$SENSITIVE_COUNT" -gt 0 ]; then
+            echo "   ⚠️  Found $SENSITIVE_COUNT URLs with sensitive extensions."
+            echo "[+] httpx probing sensitive files..."
+            # Note: httpx does not need -insecure; it handles SSL errors automatically
+            $HTTPX -silent -mc 200,403,401 -l sensitive_files_all.txt -threads "$THREADS" -rl "$RATE_LIMIT" -random-agent -o sensitive_probed.txt 2>/dev/null
+            grep ":200$" sensitive_probed.txt | sed 's/:200$//' > live_sensitive_files.txt
+            grep -E ":40[13]$" sensitive_probed.txt | sed -E 's/:(40[13])$//' > sensitive_forbidden.txt
+            LIVE_SENSITIVE=$(wc -l < live_sensitive_files.txt)
 
-        if [ "$LIVE_SENSITIVE" -gt 0 ]; then
-            echo "   🚨 $LIVE_SENSITIVE live sensitive files!"
-            mkdir -p sensitive_downloads
-            cd sensitive_downloads
-            $WGET -i ../live_sensitive_files.txt -q --show-progress --timeout=10 --tries=2 --no-check-certificate -U "$CHROME_UA" 2>/dev/null
-            cd ..
+            if [ "$LIVE_SENSITIVE" -gt 0 ]; then
+                echo "   🚨 $LIVE_SENSITIVE live sensitive files!"
+                mkdir -p sensitive_downloads
+                (
+                    cd sensitive_downloads
+                    # Use -x to preserve directory structure
+                    $WGET -x -i ../live_sensitive_files.txt -q --show-progress --timeout=10 --tries=2 --no-check-certificate -U "$CHROME_UA" 2>/dev/null
+                )
+            else
+                echo "   😔 No live (200) sensitive files."
+            fi
+
+            if [ -s sensitive_forbidden.txt ]; then
+                if [ "$RUN_BYPASS" = true ]; then
+                    echo "   🔓 Testing bypass techniques on $(wc -l < sensitive_forbidden.txt) forbidden sensitive URLs..."
+                    mkdir -p bypass_sensitive
+                    touch bypass_sensitive/failures_temp.txt
+                    while IFS= read -r url; do
+                        test_bypass "$url" "bypass_sensitive" "bypass_sensitive/failures_temp.txt"
+                    done < sensitive_forbidden.txt
+                    cat bypass_sensitive/failures_temp.txt >> sensitive_forbidden.txt
+                    sort -u -o sensitive_forbidden.txt sensitive_forbidden.txt
+                    rm bypass_sensitive/failures_temp.txt
+                else
+                    echo "   ⏭️  Skipping bypass (use --bypass to enable)."
+                fi
+            fi
         else
-            echo "   😔 No live (200) sensitive files."
+            echo "   🤷 No sensitive extensions found."
         fi
 
+        # ---------- JUICY PATH HUNTING (keywords) ----------
+        echo "[+] 🔍 Hunting juicy paths (keywords: ${JUICY_WORDS//|/ })..."
+        grep -Ei "($JUICY_WORDS)" all_urls.txt | grep -vE "\.($SENSITIVE_EXTS)(\?.*)?$" | sort -u > juicy_paths.txt 2>/dev/null
+        JUICY_COUNT=$(wc -l < juicy_paths.txt)
+        if [ "$JUICY_COUNT" -gt 0 ]; then
+            echo "   🎯 Found $JUICY_COUNT juicy keyword URLs."
+            echo "[+] httpx probing juicy paths..."
+            $HTTPX -silent -mc 200,403,401 -l juicy_paths.txt -threads "$THREADS" -rl "$RATE_LIMIT" -random-agent -o juicy_probed.txt 2>/dev/null
+            grep ":200$" juicy_probed.txt | sed 's/:200$//' > live_juicy_paths.txt
+            grep -E ":40[13]$" juicy_probed.txt | sed -E 's/:(40[13])$//' > juicy_forbidden.txt
+            LIVE_JUICY=$(wc -l < live_juicy_paths.txt)
+            echo "   🔥 $LIVE_JUICY live juicy endpoints."
+
+            if [ -s juicy_forbidden.txt ]; then
+                if [ "$RUN_BYPASS" = true ]; then
+                    echo "   🔓 Testing bypass techniques on $(wc -l < juicy_forbidden.txt) forbidden juicy URLs..."
+                    mkdir -p bypass_juicy
+                    touch bypass_juicy/failures_temp.txt
+                    while IFS= read -r url; do
+                        test_bypass "$url" "bypass_juicy" "bypass_juicy/failures_temp.txt"
+                    done < juicy_forbidden.txt
+                    cat bypass_juicy/failures_temp.txt >> juicy_forbidden.txt
+                    sort -u -o juicy_forbidden.txt juicy_forbidden.txt
+                    rm bypass_juicy/failures_temp.txt
+                else
+                    echo "   ⏭️  Skipping bypass (use --bypass to enable)."
+                fi
+            fi
+        else
+            echo "   🤷 No juicy paths found."
+        fi
+
+        # ---------- JS/TS FILES: EXTRACT, PROBE, DOWNLOAD ----------
+        echo "[+] 📜 Processing JavaScript/TypeScript files (download only, manual review)..."
+        # Match .js, .ts, .tsx with optional query parameters, exclude known false positives
+        grep -iE "\.(js|ts|tsx)(\?.*)?$" all_urls.txt | grep -ivE "\.(json|jsp|js\.map|ts\.map|tsx\.map)(\?.*)?$" | sort -u > js_ts_files_all.txt 2>/dev/null
+        JS_TS_COUNT=$(wc -l < js_ts_files_all.txt)
+
+        if [ "$JS_TS_COUNT" -gt 0 ]; then
+            echo "   🟢 Checking live JS/TS files..."
+            $HTTPX -silent -mc 200 -l js_ts_files_all.txt -threads "$THREADS" -rl "$RATE_LIMIT" -random-agent -o live_js_ts.txt 2>/dev/null
+            LIVE_JS_TS=$(wc -l < live_js_ts.txt)
+
+            if [ "$LIVE_JS_TS" -gt 0 ]; then
+                echo "   📥 Downloading $LIVE_JS_TS live JS/TS files to 'js_ts_downloads' (manual analysis)..."
+                mkdir -p js_ts_downloads
+                (
+                    cd js_ts_downloads
+                    # Use -x to preserve directory structure
+                    $WGET -x -i ../live_js_ts.txt -q --show-progress --timeout=10 --tries=2 --no-check-certificate -U "$CHROME_UA" 2>/dev/null
+                )
+            else
+                echo "   ❌ No live JS/TS files found."
+            fi
+        else
+            echo "   ❌ No JS/TS files found."
+        fi
+
+        # ---------- PARAMETER EXTRACTION ----------
+        echo "[+] 🔧 Extracting all URL parameters for fuzzing..."
+        grep -oP '[\?&]\K[^=]+' all_urls.txt 2>/dev/null | sort -u > parameters.txt
+        PARA_COUNT=$(wc -l < parameters.txt)
+        if [ "$PARA_COUNT" -gt 0 ]; then
+            echo "   ✅ Found $PARA_COUNT unique parameter names."
+        else
+            echo "   🤷 No parameters found."
+        fi
+
+        # ---------- POST-SCAN CLEANUP ----------
+        cleanup_domain_folder "$OUTDIR" "$BASE_DOMAIN"
+
+        # ---------- FINAL SUMMARY ----------
+        echo "=========================================="
+        echo " 🏁 Mission Complete for $RAW_DOMAIN"
+        echo " 📂 Output directory: $OUTDIR"
+        echo "    - all_urls.txt: $TOTAL_CLEAN cleaned URLs"
+        echo "    - live_sensitive_files.txt: $(wc -l < live_sensitive_files.txt 2>/dev/null || echo 0)"
         if [ -s sensitive_forbidden.txt ]; then
-            if [ "$RUN_BYPASS" = true ]; then
-                echo "   🔓 Testing bypass techniques on $(wc -l < sensitive_forbidden.txt) forbidden sensitive URLs..."
-                mkdir -p bypass_sensitive
-                touch bypass_sensitive/failures_temp.txt
-                while IFS= read -r url; do
-                    test_bypass "$url" "bypass_sensitive" "bypass_sensitive/failures_temp.txt"
-                done < sensitive_forbidden.txt
-                cat bypass_sensitive/failures_temp.txt >> sensitive_forbidden.txt
-                sort -u -o sensitive_forbidden.txt sensitive_forbidden.txt
-                rm bypass_sensitive/failures_temp.txt
-            else
-                echo "   ⏭️  Skipping bypass (use --bypass to enable)."
-            fi
+            echo "    - sensitive_forbidden.txt: $(wc -l < sensitive_forbidden.txt) (bypass tests in bypass_sensitive/)"
         fi
-    else
-        echo "   🤷 No sensitive extensions found."
-    fi
-
-    # ---------- JUICY PATH HUNTING (keywords) ----------
-    echo "[+] 🔍 Hunting juicy paths (keywords: ${JUICY_WORDS//|/ })..."
-    grep -Ei "($JUICY_WORDS)" all_urls.txt | grep -vE "\.($SENSITIVE_EXTS)(\?.*)?$" | sort -u > juicy_paths.txt 2>/dev/null
-    JUICY_COUNT=$(wc -l < juicy_paths.txt)
-    if [ "$JUICY_COUNT" -gt 0 ]; then
-        echo "   🎯 Found $JUICY_COUNT juicy keyword URLs."
-        echo "[+] httpx probing juicy paths..."
-        $HTTPX -silent -insecure -mc 200,403,401 -l juicy_paths.txt -threads "$THREADS" -rl "$RATE_LIMIT" -random-agent -o juicy_probed.txt 2>/dev/null
-        grep ":200$" juicy_probed.txt | sed 's/:200$//' > live_juicy_paths.txt
-        grep -E ":40[13]$" juicy_probed.txt | sed -E 's/:(40[13])$//' > juicy_forbidden.txt
-        LIVE_JUICY=$(wc -l < live_juicy_paths.txt)
-        echo "   🔥 $LIVE_JUICY live juicy endpoints."
-
+        echo "    - live_juicy_paths.txt: $(wc -l < live_juicy_paths.txt 2>/dev/null || echo 0)"
         if [ -s juicy_forbidden.txt ]; then
-            if [ "$RUN_BYPASS" = true ]; then
-                echo "   🔓 Testing bypass techniques on $(wc -l < juicy_forbidden.txt) forbidden juicy URLs..."
-                mkdir -p bypass_juicy
-                touch bypass_juicy/failures_temp.txt
-                while IFS= read -r url; do
-                    test_bypass "$url" "bypass_juicy" "bypass_juicy/failures_temp.txt"
-                done < juicy_forbidden.txt
-                cat bypass_juicy/failures_temp.txt >> juicy_forbidden.txt
-                sort -u -o juicy_forbidden.txt juicy_forbidden.txt
-                rm bypass_juicy/failures_temp.txt
-            else
-                echo "   ⏭️  Skipping bypass (use --bypass to enable)."
-            fi
+            echo "    - juicy_forbidden.txt: $(wc -l < juicy_forbidden.txt) (bypass tests in bypass_juicy/)"
         fi
-    else
-        echo "   🤷 No juicy paths found."
-    fi
+        echo "    - live_js_ts.txt: $(wc -l < live_js_ts.txt 2>/dev/null || echo 0)"
+        echo "    - parameters.txt: $(wc -l < parameters.txt 2>/dev/null || echo 0)"
+        echo "=========================================="
 
-    # ---------- JS/TS FILES: EXTRACT, PROBE, DOWNLOAD ----------
-    echo "[+] 📜 Processing JavaScript/TypeScript files (download only, manual review)..."
-    # Match .js, .ts, .tsx with optional query parameters, exclude known false positives
-    grep -iE "\.(js|ts|tsx)(\?.*)?$" all_urls.txt | grep -ivE "\.(json|jsp|js\.map|ts\.map|tsx\.map)(\?.*)?$" | sort -u > js_ts_files_all.txt 2>/dev/null
-    JS_TS_COUNT=$(wc -l < js_ts_files_all.txt)
+    )  # end subshell
 
-    if [ "$JS_TS_COUNT" -gt 0 ]; then
-        echo "   🟢 Checking live JS/TS files..."
-        $HTTPX -silent -insecure -mc 200 -l js_ts_files_all.txt -threads "$THREADS" -rl "$RATE_LIMIT" -random-agent -o live_js_ts.txt 2>/dev/null
-        LIVE_JS_TS=$(wc -l < live_js_ts.txt)
-
-        if [ "$LIVE_JS_TS" -gt 0 ]; then
-            echo "   📥 Downloading $LIVE_JS_TS live JS/TS files to 'js_ts_downloads' (manual analysis)..."
-            mkdir -p js_ts_downloads
-            cd js_ts_downloads
-            $WGET -i ../live_js_ts.txt -q --show-progress --timeout=10 --tries=2 --no-check-certificate -U "$CHROME_UA" 2>/dev/null
-            cd ..
-        else
-            echo "   ❌ No live JS/TS files found."
-        fi
-    else
-        echo "   ❌ No JS/TS files found."
-    fi
-
-    # ---------- PARAMETER EXTRACTION ----------
-    echo "[+] 🔧 Extracting all URL parameters for fuzzing..."
-    grep -oP '[\?&]\K[^=]+' all_urls.txt 2>/dev/null | sort -u > parameters.txt
-    PARA_COUNT=$(wc -l < parameters.txt)
-    if [ "$PARA_COUNT" -gt 0 ]; then
-        echo "   ✅ Found $PARA_COUNT unique parameter names."
-    else
-        echo "   🤷 No parameters found."
-    fi
-
-    # ---------- POST-SCAN CLEANUP ----------
-    cleanup_domain_folder "$OUTDIR" "$BASE_DOMAIN"
-
-    # ---------- FINAL SUMMARY ----------
-    echo "=========================================="
-    echo " 🏁 Mission Complete for $RAW_DOMAIN"
-    echo " 📂 Output directory: $OUTDIR"
-    echo "    - all_urls.txt: $TOTAL_CLEAN cleaned URLs"
-    echo "    - live_sensitive_files.txt: $(wc -l < live_sensitive_files.txt 2>/dev/null || echo 0)"
-    if [ -s sensitive_forbidden.txt ]; then
-        echo "    - sensitive_forbidden.txt: $(wc -l < sensitive_forbidden.txt) (bypass tests in bypass_sensitive/)"
-    fi
-    echo "    - live_juicy_paths.txt: $(wc -l < live_juicy_paths.txt 2>/dev/null || echo 0)"
-    if [ -s juicy_forbidden.txt ]; then
-        echo "    - juicy_forbidden.txt: $(wc -l < juicy_forbidden.txt) (bypass tests in bypass_juicy/)"
-    fi
-    echo "    - live_js_ts.txt: $(wc -l < live_js_ts.txt 2>/dev/null || echo 0)"
-    echo "    - parameters.txt: $(wc -l < parameters.txt 2>/dev/null || echo 0)"
-    echo "=========================================="
-
-    cd "$BASEDIR"
 done
